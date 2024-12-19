@@ -4,5 +4,11 @@
 ```bash
 (?<=data-snippet-clipboard-copy-content=").+(?="><pre>)
 ```
-4. base64编码
-5. 写入文件
+3. base64编码，写入文件
+```bash
+- name: Some name
+  uses: RollyPeres/base64-to-path@v1
+  with:
+    filePath: ${{ github.workspace }}/somefile.someextension
+    encodedString: ${{ secrets.SOME_GITHUB_SECRET }}
+```
