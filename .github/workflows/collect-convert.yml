@@ -1,11 +1,3 @@
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-#
-# File: .github/workflows/openwrt-bulder.yml
-# Description: Build OpenWrt using GitHub Actions
-#
-# Copyright (c) 2019-2024 P3TERX <https://p3terx.com>
-#
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
@@ -21,16 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
 
-    - name: Read template from file
-      id: template
-      uses: traversals-analytics-and-intelligence/file-reader-action@master
-      with:
-        file: dgithub.xyz/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7
-
-    - name: Get the template output
-      run: echo "${{ steps.template.outputs.content }}"
 
 
 
