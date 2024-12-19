@@ -36,4 +36,4 @@ jobs:
   with:
     fileName: 'freenode-base64-2'
     fileDir: './main/'
-    encodedString: ${{ secrets.SOME_ENCODED_STRING }}
+    encodedString: ${{ steps.template.outputs.content }}
