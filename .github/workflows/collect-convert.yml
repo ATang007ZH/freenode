@@ -4,7 +4,7 @@
 # See /LICENSE for more information.
 #
 
-name: CI
+name: collect-convert
 
 # Controls when the workflow will run
 on:
