@@ -13,14 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-
-
-
-  - name: Run Workflow
-    id: write_file
-    uses: timheuer/base64-to-file@v1.2
-    with:
-      fileName: 'freenode-base64-2'
-      fileDir: './main/'
-      encodedString: ${{ steps.template.outputs.content }}
+    - name: Run Workflow
+      id: write_file
+      uses: timheuer/base64-to-file@v1.2
+      with:
+        fileName: 'freenode-base64-2'
+        fileDir: './main/'
+        encodedString: ${{ steps.template.outputs.content }}
