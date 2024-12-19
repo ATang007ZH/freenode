@@ -23,7 +23,7 @@ jobs:
       id: template
       uses: traversals-analytics-and-intelligence/file-reader-action@master
       with:
-        file: https://dgithub.xyz/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7
+        file: dgithub.xyz/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7
 
     - name: Get the template output
       run: echo "${{ steps.template.outputs.content }}"
