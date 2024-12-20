@@ -17,23 +17,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: Read template from file
-      id: template
-      uses: traversals-analytics-and-intelligence/file-reader-action@master
-      with:
-        file: dgithub.xyz/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7
-
-    - name: Get the template output
-      run: echo "${{ steps.template.outputs.content }}"
-
-
-
+    - name: Use curl to read remote webpage and filter with grep
+      run: |
+        curl -s https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -E '(?<=data-snippet-clipboard-copy-content=").+(?="><pre>)' > freenode.txt
+        cat freenode.txt
+        
     - name: Run Workflow
       id: write_file
       uses: timheuer/base64-to-file@v1.2
       with:
         fileName: 'freenode-base64-2'
         fileDir: './main/'
-        encodedString: ${{ steps.template.outputs.content }}
+        encodedString: ${{ freenode.txt }}
