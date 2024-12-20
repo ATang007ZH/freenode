@@ -23,4 +23,4 @@ jobs:
     - name: Use curl to read remote webpage and filter with grep
       run: |
         curl -s https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=").+(?="><pre>)' | base64 > ./freenode-base64-2
-        cat ./freenode-base64-2
+        cat ./freenode-base64-3
