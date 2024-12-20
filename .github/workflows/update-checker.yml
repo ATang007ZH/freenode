@@ -29,7 +29,7 @@ jobs:
           import os
           import time
 
-          FILE_TO_WATCH = "wiki/v2ray免费账号"  # 替换为你要监控的文件路径
+          FILE_TO_WATCH = "Alvin9999/new-pac/wiki/v2ray免费账号"  # 替换为你要监控的文件路径
 
           def get_last_modified_time(file_path):
               return os.path.getmtime(file_path)
