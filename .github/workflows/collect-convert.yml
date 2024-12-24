@@ -26,7 +26,7 @@ jobs:
       run: |
         curl -s https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=").+(?="><p)' > ./freenode.txt
         curl -s https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=").+(?="><p)' >> ./freenode.txt
-        sed -i 's/&amp;//g' ./freenode.txt
+        sed -i 's/amp;//g' ./freenode.txt
         cat ./freenode.txt | base64 -w 0  > ./freenode-base64
         cat ./freenode-base64
         
