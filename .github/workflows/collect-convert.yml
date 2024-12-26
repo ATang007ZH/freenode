@@ -35,7 +35,7 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add .
-        git commit -m "添加远程网页内容到指定文件"
+        git commit -m "搜集节点到指定文件"
         git push
         echo $? > status
         git add status
