@@ -30,10 +30,20 @@ jobs:
         cat ./freenode.txt | base64 -w 0  > ./freenode-base64
         cat ./freenode-base64
         
-    - name: 提交并推送更改
+    - name: 对比库文件，有差异则提交并推送更改
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add .
-        git commit -m "搜集节点到指定文件"
-        git push || echo $? > status && git add status && git commit -m "git push 返回值" && git push
+        if ! git diff --quiet freenode-base64; then
+          echo "File has changes."
+          echo 1 > status
+          git add .
+          git commit -m "更新节点"
+          git push
+        else
+          echo "No changes in file."
+          echo 0 > status
+          git add status
+          git commit -m "无更新"
+          git push
+        fi
