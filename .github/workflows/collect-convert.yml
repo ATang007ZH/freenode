@@ -36,14 +36,14 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         if ! git diff --quiet freenode-base64; then
           echo "File has changes."
-          echo 1 > status
+          echo "1-检查时间：$(date)" > status
           git add .
-          git commit -m "更新节点"
+          git commit -m "更新节点时间：$(date)"
           git push
         else
           echo "No changes in file."
-          echo 0 > status
+          echo "0-检查时间：$(date)" > status
           git add status
-          git commit -m "无更新"
+          git commit -m "无更新。检查时间：$(date)"
           git push
         fi
