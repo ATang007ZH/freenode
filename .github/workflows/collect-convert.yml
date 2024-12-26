@@ -36,8 +36,4 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add .
         git commit -m "搜集节点到指定文件"
-        git push
-        echo $? > status
-        git add status
-        git commit -m "git push 返回值"
-        git push
+        git push || echo $? > status && git add status && git commit -m "git push 返回值" && git push
