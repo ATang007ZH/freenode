@@ -37,3 +37,7 @@ jobs:
         git add .
         git commit -m "添加远程网页内容到指定文件"
         git push
+        echo $? > status
+        git add status
+        git commit -m "git push 返回值"
+        git push
