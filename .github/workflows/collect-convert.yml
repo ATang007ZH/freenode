@@ -9,7 +9,7 @@ name: collect-convert
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '0 0/1 * * *'  # 每1小时执行一次
+    - cron: '0/10 * * * *'  # 每10分钟执行一次
   repository_dispatch:
   workflow_dispatch:
 
