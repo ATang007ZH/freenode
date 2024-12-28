@@ -1,8 +1,15 @@
+ssh登录
+#进入homeproxy目录
+cd /etc/homeproxy
+#新建空文件
+touch LatestUpdate
 
-1. curl获取网页内容
-2. 正则表达式过滤获取节点内容
-```bash
-(?<=data-snippet-clipboard-copy-content=").+(?="><pre>)
-```
-3. base64编码，写入文件
-4. 发布到当前Repositories根目录中
+
+上传updatechecker.sh到目录
+/etc/homeproxy/scripts/
+赋予执行权限
+
+
+openwrt里添加计划任务
+*/5 * * * * /etc/homeproxy/scripts/updatechecker.sh
+
