@@ -37,7 +37,6 @@ jobs:
         if ! git diff --quiet freenode-base64; then
           echo "File has changes."
           echo "1-检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)" > status
-#         echo "LatestUpdateTime: $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)" > LatestUpdateTime
           git add .
           git commit -m "节点更新时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)"
           git push
