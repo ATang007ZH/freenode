@@ -1,26 +1,35 @@
-#!/bin/bash
+#!/bin/sh
 
-# 定义远程URL和本地文件路径
-REMOTE_URL="https://raw.githubusercontent.com/ATang007ZH/freenode/refs/heads/main/LatestUpdateTime"
-LOCAL_FILE="/path/to/local/file.txt"
-TEMP_FILE="/tmp/temp_file.txt"
+# 定义变量
+REMOTE_FILE_URL="https://raw.dgithub.xyz/ATang007ZH/freenode/refs/heads/main/freenode-base64" # 远程文件URL
+LOCAL_FILE_PATH="/etc/homeproxy/LatestUpdate"                    # 本地文件路径
+COMPARE_TOOL="md5sum"                                        # 比较工具，例如：md5sum, sha256sum等
+#进行节点更新
+COMMAND_TO_EXECUTE="/etc/homeproxy/scripts/update_subscriptions.uc"                     # 要执行的命令或脚本路径
 
-# 下载远程文件到临时位置
-curl -s -o "$TEMP_FILE" "$REMOTE_URL"
 
-# 比较临时文件和本地文件
-if ! cmp -s "$TEMP_FILE" "$LOCAL_FILE"; then
-    echo "Files differ. Performing action..."
+# 获取远程文件并保存为临时文件
+TEMP_FILE_PATH=$(mktemp)
+wget -q -O "$TEMP_FILE_PATH" "$REMOTE_FILE_URL"
+
+# 如果下载成功则继续
+if [ $? -eq 0 ]; then
+    # 计算两个文件的哈希值并进行比较
+    LOCAL_HASH=$($COMPARE_TOOL "$LOCAL_FILE_PATH" | cut -d ' ' -f 1)
+    REMOTE_HASH=$($COMPARE_TOOL "$TEMP_FILE_PATH" | cut -d ' ' -f 1)
+
+    # 如果哈希值不同，则执行命令
+    if [ "$LOCAL_HASH" != "$REMOTE_HASH" ]; then
+        sh "$COMMAND_TO_EXECUTE"
+        
+        # 可选：更新本地文件（如果你希望用新的远程文件替换旧的本地文件）
+        mv "$TEMP_FILE_PATH" "$LOCAL_FILE_PATH"
+    else
+        echo "No changes detected."
+    fi
     
-    # 更新本地文件为新的内容（可选）
-    mv "$TEMP_FILE" "$LOCAL_FILE"
-    
-    # 触发另一个操作或脚本
-    /path/to/another/script.sh
-    
+    # 清理临时文件（仅当没有移动该文件来更新本地文件时需要）
+    [ -f "$TEMP_FILE_PATH" ] && rm -f "$TEMP_FILE_PATH"
 else
-    echo "No differences found."
+    echo "Failed to download the remote file."
 fi
-
-# 清理临时文件
-rm -f "$TEMP_FILE"
