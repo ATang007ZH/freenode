@@ -2,4 +2,4 @@ vless://af7f07dc-d726-4b1e-967d-dbb6c594999f@185.22.153.73:25835?encryption=none
 vless://9c2c632a-c88f-478f-afea-629764427d51@185.226.172.156:22298?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.yahoo.com&fp=chrome&pbk=9gabR4G0GdHtht5oD1D9wSCjGs76bMT7zWEaSh6LBGM&sid=8e256e4d&type=tcp&headerType=none#dongtaiwang.com%E8%8A%82%E7%82%B92
 ssr://ZG9uZ3RhaXdhbmc1LmNvbTo1MDA1NTphdXRoX2NoYWluX2E6bm9uZTpwbGFpbjpaRzl1WjNSaGFYZGhibWN1WTI5dC8_b2Jmc3BhcmFtPSZyZW1hcmtzPVpHOXVaM1JoYVhkaGJtY3VZMjl0NXJTYjVwMko1NS0yVTFOU01RJnVvdD0x
 ssr://c3NyMi40NDY1Nzc5Lnh5ejoyMjIyMjphdXRoX2NoYWluX2E6bm9uZTp0bHMxLjJfdGlja2V0X2F1dGg6Wkc5dVozUmhhWGRoYm1jdVkyOXQvP29iZnNwYXJhbT0mcmVtYXJrcz1aRzl1WjNSaGFYZGhibWN1WTI5dDVyU2I1cDJKNTUtMk1nJnVvdD0x
-ss://YWVzLTI1Ni1nY206ZG9uZ3RhaXdhbmcuY29t@185.22.155.228:23456#dongtaiwang.com%E8%8A%82%E7%82%B9
+ss://YWVzLTI1Ni1nY206ZG9uZ3RhaXdhbmcuY29t@108.181.3.66:23456#dongtaiwang.com%E8%8A%82%E7%82%B9
