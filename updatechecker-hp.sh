@@ -5,7 +5,7 @@ REMOTE_FILE_URL="https://raw.dgithub.xyz/ATang007ZH/freenode/refs/heads/main/fre
 LOCAL_FILE_PATH="/etc/homeproxy/LatestUpdate"                    # 本地文件路径
 COMPARE_TOOL="md5sum"                                        # 比较工具，例如：md5sum, sha256sum等
 #进行节点更新
-COMMAND_TO_EXECUTE="/etc/homeproxy/scripts/update_subscriptions.uc"                     # 要执行的命令或脚本路径
+SCRIPTS_DIR="/etc/homeproxy/scripts"                 # 要执行的命令或脚本路径
 
 
 # 获取远程文件并保存为临时文件
@@ -20,7 +20,7 @@ if [ $? -eq 0 ]; then
 
     # 如果哈希值不同，则执行命令
     if [ "$LOCAL_HASH" != "$REMOTE_HASH" ]; then
-        sh "$COMMAND_TO_EXECUTE"
+        "$SCRIPTS_DIR"/update_subscriptions.uc
         
         # 可选：更新本地文件（如果你希望用新的远程文件替换旧的本地文件）
         mv "$TEMP_FILE_PATH" "$LOCAL_FILE_PATH"
