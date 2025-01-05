@@ -8,5 +8,5 @@ ssh登录
 
 
 openwrt里添加计划任务
-*/5 * * * * /etc/homeproxy/scripts/updatechecker.sh
+*/5 * * * * /etc/homeproxy/scripts/updatechecker-hp.sh
 
