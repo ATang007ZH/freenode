@@ -24,6 +24,7 @@ if [ $? -eq 0 ]; then
         
         # 可选：更新本地文件（如果你希望用新的远程文件替换旧的本地文件）
         mv "$TEMP_FILE_PATH" "$LOCAL_FILE_PATH"
+        echo "Update node."
     else
         echo "No changes detected."
     fi
