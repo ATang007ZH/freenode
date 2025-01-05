@@ -1,8 +1,5 @@
 ssh登录
-#进入homeproxy目录
-cd /etc/homeproxy
-#新建空文件
-touch LatestUpdate
+
 
 
 上传updatechecker.sh到目录
