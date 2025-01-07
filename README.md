@@ -2,7 +2,7 @@ ssh登录
 
 
 
-上传updatechecker.sh到目录
+上传updatechecker-hp.sh到目录
 /etc/homeproxy/scripts/
 赋予执行权限
 
