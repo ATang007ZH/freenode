@@ -2,7 +2,7 @@
 
 # 定义变量
 REMOTE_FILE_URL="https://raw.dgithub.xyz/ATang007ZH/freenode/refs/heads/main/freenode-base64" # 远程文件URL
-LOCAL_FILE_PATH="/etc/LatestUpdate"                    # 本地文件路径
+LOCAL_FILE_PATH="/etc/passwall/LatestUpdate"                    # 本地文件路径
 COMPARE_TOOL="md5sum"                                  # 比较工具，例如：md5sum, sha256sum等
 SUBSCRIBE_SCRIPT_PATH="/usr/share/passwall/subscribe.lua" # 订阅脚本路径
 
