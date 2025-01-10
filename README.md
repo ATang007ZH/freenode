@@ -1,3 +1,5 @@
+updatechecker-hp.sh使用方法：（-pw的类似）
+
 ssh登录
 
 
