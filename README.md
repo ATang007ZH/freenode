@@ -1,3 +1,9 @@
+updatechecker-pw.sh是passwall用的
+----------------------------------------------
+
+
+updatechecker-hp.sh是homeproxy用的
+----------------------------------------------
 updatechecker-hp.sh使用方法：（-pw的类似）
 
 ssh登录
