@@ -5,6 +5,8 @@ passwall新版代码已改进为先检测，有变化才执行更新。
 
 所以passwall可以不用此代码了。
 
+2025-1-13
+
 
 
 updatechecker-hp.sh是homeproxy用的
