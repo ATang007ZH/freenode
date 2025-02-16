@@ -1,0 +1,49 @@
+# This is a basic workflow to help you get started with Actions
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+
+name: collect-convert
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0/10 * * * *'  # 每10分钟执行一次
+  repository_dispatch:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Use curl to read remote webpage and filter with grep
+      run: |
+        curl -s https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=").+(?="><p)' > ./freenode.txt
+        curl -s https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=").+(?="><p)' >> ./freenode.txt
+        sed -i 's/amp;//g' ./freenode.txt
+        cat ./freenode.txt | base64 -w 0  > ./freenode-base64
+        cat ./freenode-base64
+        
+    - name: 对比库文件，有差异则提交并推送更改
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        if ! git diff --quiet freenode-base64; then
+          echo "File has changes."
+          echo "1-检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)" > status
+          git add .
+          git commit -m "节点更新时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)"
+          git push
+        else
+          echo "No changes in file."
+          echo "0-检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)" > status
+          git add status
+          git commit -m "节点无更新。检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)"
+          git push
+        fi
