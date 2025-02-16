@@ -4,7 +4,7 @@
 # See /LICENSE for more information.
 #
 
-name: collect-convert
+name: node collect
 
 # Controls when the workflow will run
 on:
