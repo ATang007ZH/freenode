@@ -47,8 +47,10 @@ jobs:
           git commit -m "节点无更新。检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)"
           git push
         fi
-        
-      - name: Delete previous runs
-        uses: peter-evans/delete-previous-run@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+
+
+    - name: Delete previous runs
+      uses: peter-evans/delete-previous-run@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        preserve-runs: 3 
