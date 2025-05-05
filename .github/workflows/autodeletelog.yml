@@ -18,4 +18,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: 'ATang007ZH/freenode'
           retain_days: 1
-          keep_minimum_runs: 3
+          keep_minimum_runs: 1
