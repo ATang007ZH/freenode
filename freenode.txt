@@ -3,3 +3,4 @@ vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlZNRVNT6IqC54K5MSIsDQogICJhZGQiOiAiMjAw
 hysteria2://dongtaiwang.com@62.210.113.151:33563?sni=apple.com&alpn=h3&insecure=1#Hysteria2%E8%8A%82%E7%82%B9
 ssr://ZG9uZ3RhaXdhbmc1LmNvbTozMzMzNjphdXRoX2NoYWluX2E6Y2hhY2hhMjAtaWV0Zjp0bHMxLjJfdGlja2V0X2F1dGg6Wkc5dVozUmhhWGRoYm1jdVkyOXQvP29iZnNwYXJhbT0mcmVtYXJrcz1VMU5TNklxQzU0SzU
 ss://YWVzLTI1Ni1nY206ZG9uZ3RhaXdhbmcuY29t@92.118.205.61:22222#SS%E8%8A%82%E7%82%B9
+ss://YWVzLTI1Ni1nY206ZG9uZ3RhaXdhbmcuY29t@[2001:bc8:32d7:30b::202]:13355#SS%E8%8A%82%E7%82%B9-ipv6
