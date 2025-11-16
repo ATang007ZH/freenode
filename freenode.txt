@@ -1,5 +1,5 @@
 vless://3096e584-f1c9-4841-98a2-3a7bb06d0665@212.129.2.4:33550?encryption=none&security=reality&sni=tidal.com&fp=chrome&pbk=GgKubkenTMtjJFyReTev4XoMBHNZVik9YBOiXbfXYCo&sid=ce352eaf7159bdc4&spx=%2F&type=xhttp&path=%2Fgithub.com%2FAlvin9999#VLESS%E8%8A%82%E7%82%B91-xhttp-reality
 vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlZNRVNT6IqC54K5Mi1pcHY2IiwNCiAgImFkZCI6ICIyMDAxOmJjODoxMjAzOjIwOTo6NTAiLA0KICAicG9ydCI6ICIyMzAwOCIsDQogICJpZCI6ICJlOTk0YjgwNC0zNDVjLTRlOGItYTgyNy03ZTAwNTY5NGQxNDYiLA0KICAiYWlkIjogIjAiLA0KICAic2N5IjogImF1dG8iLA0KICAibmV0IjogIndzIiwNCiAgInR5cGUiOiAibm9uZSIsDQogICJob3N0IjogInd3dy5iaW5nLmNvbSIsDQogICJwYXRoIjogIi9naXRodWIuY29tL0FsdmluOTk5OSIsDQogICJ0bHMiOiAiIiwNCiAgInNuaSI6ICIiLA0KICAiYWxwbiI6ICIiLA0KICAiZnAiOiAiIg0KfQ==
-hysteria2://dongtaiwang.com@[2001:bc8:1203:209::60]:33880?sni=apple.com&alpn=h3&insecure=1#Hysteria2%E8%8A%82%E7%82%B93-ipv6
+hysteria2://dongtaiwang.com@195.154.206.231:33880?sni=apple.com&alpn=h3&insecure=1#Hysteria2%E8%8A%82%E7%82%B93
 ssr://c3NyMi43NjI5ODgueHl6OjMzMzM2OmF1dGhfY2hhaW5fYTpjaGFjaGEyMC1pZXRmOnRsczEuMl90aWNrZXRfYXV0aDpaRzl1WjNSaGFYZGhibWN1WTI5dC8_b2Jmc3BhcmFtPSZyZW1hcmtzPVUxTlM2SXFDNTRLNQ
 ss://YWVzLTI1Ni1nY206ZG9uZ3RhaXdhbmcuY29t@[2001:bc8:1203:106::300]:33333#SS%E8%8A%82%E7%82%B9-ipv6
