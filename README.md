@@ -18,7 +18,7 @@ passwall使用建议:
 	
   
 
-updatechecker-pw.sh是passwall用的
+~~updatechecker-pw.sh是passwall用的~~
 ----------------------------------------------
 passwall新版代码已改进为先检测，有变化才执行更新。
 且本身支持每小时更新。
