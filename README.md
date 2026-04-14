@@ -3,7 +3,7 @@ passwall使用建议:
 
 	节点订阅，添加
 		备注：myfreenode
-		网址：https://raw.bgithub.xyz/ATang007ZH/freenode/refs/heads/main/freenode-base64
+		网址：https://cdn.jsdelivr.net/gh/ATang007ZH/freenode@main/freenode-base64
 		开启自动更新订阅：勾选
 		更新模式：循环
 		更新间隔：1小时
