@@ -3,7 +3,7 @@ passwall使用建议:
 
 	节点订阅，添加
 		备注：myfreenode
-		网址：https://cdn.jsdelivr.net/gh/ATang007ZH/freenode@main/freenode-base64
+		网址：https://github.com/ATang007ZH/freenode@main/freenode-base64
 		开启自动更新订阅：勾选
 		更新模式：循环
 		更新间隔：1小时
@@ -23,7 +23,7 @@ passwall使用建议:
 passwall新版代码已改进为先检测，有变化才执行更新。
 且本身支持每小时更新。
 
-所以passwall可以不用此代码了。
+所以passwall可以不用此 .sh代码了。直接更新订阅即可。
 
 2025-1-13
 
