@@ -1,49 +1,79 @@
-# This is a basic workflow to help you get started with Actions
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
 
+# GitHub Actions 自动采集节点
 name: node collect 2
 
-# Controls when the workflow will run
 on:
   schedule:
-    - cron: '0/10 * * * *'  # 每10分钟执行一次
+    - cron: '*/10 * * * *'  # 每10分钟执行一次（UTC时间）
   repository_dispatch:
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# 允许 GitHub Actions 提交和推送文件
+permissions:
+  contents: write
+
+# 防止同一个工作流同时运行多个实例
+concurrency:
+  group: node-collect-2
+  cancel-in-progress: false
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # 固定 Ubuntu 24.04，避免系统自动升级造成兼容问题
+    runs-on: ubuntu-24.04
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      # 1. 获取仓库代码
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
-    - name: Use curl to read remote webpage and filter with grep
-      run: |
-        curl -s https://s3.dualstack.us-east-1.amazonaws.com/zhifan/wiki.html | grep -oP '(?:anytls|vmess|ssr|ss)\x3A\x2F\x2F[^\s"<]+' > ./freenode2.txt
-        sed -i 's/amp;//g' ./freenode2.txt
-        cat ./freenode2.txt | base64 -w 0  > ./freenode2-base64
-        cat ./freenode2-base64
+      # 2. 获取远程节点并生成文件
+      - name: Collect nodes
+        shell: bash
+        run: |
+          set -euo pipefail
 
-        git add freenode2.txt freenode2-base64
-    - name: 对比库文件，有差异则提交并推送更改
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        if ! git diff --quiet freenode2-base64; then
-          echo "File has changes."
-          echo "1-检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)" > status
-          git add .
-          git commit -m "节点更新时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)"
-          git push
-        else
-          echo "No changes in file."
-          echo "0-检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)" > status
-          git add status
-          git commit -m "节点无更新。检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)"
-          git push
-        fi
+          echo "开始获取节点..."
+
+          curl -fsSL --retry 3 --retry-delay 5 \
+            https://s3.dualstack.us-east-1.amazonaws.com/zhifan/wiki.html \
+            | grep -oP '(?:anytls|vmess|ssr|ss)\x3A\x2F\x2F[^\s"<]+' \
+            > ./freenode2.txt || true
+
+          # 清理 HTML 转义字符
+          sed -i 's/amp;//g' ./freenode2.txt
+
+          # 生成 Base64 文件
+          base64 -w 0 ./freenode2.txt > ./freenode2-base64
+
+          echo "节点数量：$(wc -l < ./freenode2.txt)"
+
+      # 3. 对比文件，有变化才提交
+      - name: Compare and push changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          # 注意：这里比较的是工作区与 HEAD 的差异
+          if ! git diff --quiet HEAD -- freenode2.txt freenode2-base64; then
+
+            echo "检测到节点文件发生变化，准备提交..."
+
+            echo "1-检查时间：$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')" > status
+
+            git add freenode2.txt freenode2-base64 status
+
+            git commit -m "节点更新时间：$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')"
+
+            git push
+
+            echo "节点更新成功！"
+
+          else
+
+            echo "节点没有变化，不提交无意义的更新。"
+
+          fi
