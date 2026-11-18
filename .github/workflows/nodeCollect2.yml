@@ -28,7 +28,8 @@ jobs:
         sed -i 's/amp;//g' ./freenode2.txt
         cat ./freenode2.txt | base64 -w 0  > ./freenode2-base64
         cat ./freenode2-base64
-        
+
+        git add freenode2.txt freenode2-base64
     - name: 对比库文件，有差异则提交并推送更改
       run: |
         git config --global user.name 'github-actions[bot]'
