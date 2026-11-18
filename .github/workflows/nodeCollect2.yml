@@ -33,7 +33,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        if ! git diff --quiet freenode-base64; then
+        if ! git diff --quiet freenode2-base64; then
           echo "File has changes."
           echo "1-检查时间：$(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S)" > status
           git add .
