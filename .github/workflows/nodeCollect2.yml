@@ -24,11 +24,10 @@ jobs:
 
     - name: Use curl to read remote webpage and filter with grep
       run: |
-        curl -s https://github.com/Alvin9999-newpac/fanqiang/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=")[^"]+' > ./freenode.txt
-        curl -s https://github.com/Alvin9999-newpac/fanqiang/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=")[^"]+' >> ./freenode.txt
-        sed -i 's/amp;//g' ./freenode.txt
-        cat ./freenode.txt | base64 -w 0  > ./freenode-base64
-        cat ./freenode-base64
+        curl -s https://s3.dualstack.us-east-1.amazonaws.com/zhifan/wiki.html | grep -oP '(?:anytls|vmess|ssr|ss)\x3A\x2F\x2F[^\s"<]+' > ./freenode2.txt
+        sed -i 's/amp;//g' ./freenode2.txt
+        cat ./freenode2.txt | base64 -w 0  > ./freenode2-base64
+        cat ./freenode2-base64
         
     - name: 对比库文件，有差异则提交并推送更改
       run: |
