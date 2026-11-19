@@ -24,9 +24,9 @@ jobs:
 
     - name: Use curl to read remote webpage and filter with grep
       run: |
-        curl -s https://gitlab.com/zhifan999/fq/-/wikis/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=")[^"]+' > ./freenode.txt
-        curl -s https://gitlab.com/zhifan999/fq/-/wikis/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?<=data-snippet-clipboard-copy-content=")[^"]+' >> ./freenode.txt
-        sed -i 's/amp;//g' ./freenode3.txt
+        curl -s https://gitlab.com/zhifan999/fq/-/wikis/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?:anytls|vmess|ssr|ss)\x3A\x2F\x2F(?:\\u0026|[^\s"<\\])+' > ./freenode3.txt
+        curl -s https://gitlab.com/zhifan999/fq/-/wikis/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7 | grep -oP '(?:anytls|vmess|ssr|ss)\x3A\x2F\x2F(?:\\u0026|[^\s"<\\])+' >> ./freenode3.txt
+        sed -i 's/\\u0026/\&/g' ./freenode3.txt
         cat ./freenode3.txt | base64 -w 0  > ./freenode3-base64
         cat ./freenode3-base64
         
